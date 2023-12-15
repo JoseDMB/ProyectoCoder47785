@@ -16,10 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from AppCoder.views import crear_curso, show_html
-
+from AppCoder.views import crear_curso, show_html, mostrar_cursos
 
 urlpatterns = [
     path("AddCurso/",crear_curso),
     path("ShowPage/", show_html),
+    path('Cursos/',mostrar_cursos),
 ]
