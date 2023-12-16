@@ -21,5 +21,6 @@ from AppCoder.views import crear_curso, show_html, mostrar_cursos
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('app/', include('AppCoder.urls')),
+    path('accounts/', include('accounts.urls')),
 
 ]

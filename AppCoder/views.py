@@ -1,3 +1,5 @@
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
@@ -6,11 +8,11 @@ from AppCoder.forms import CursoForm, BusquedaCursoForm
 from AppCoder.models import Curso
 # Create your views here.
 
-class CursoList(ListView):
+class CursoList(LoginRequiredMixin,ListView):
     model = Curso
     template_name = "AppCoder/cursos_1.html"
 
-class CursoDetalle(DetailView):
+class CursoDetalle(LoginRequiredMixin,DetailView):
     model = Curso
     template_name = "AppCoder/curso_detalle.html"
 
@@ -33,10 +35,6 @@ class CursoEliminar(DeleteView):
 
 
 
-
-
-
-
 def mostrar_cursos(request):
     cursos = Curso.objects.all()
     contexto = {
@@ -46,12 +44,14 @@ def mostrar_cursos(request):
     #return redirect("/app/AddCurso/")
     return render(request,"AppCoder/Cursos.html", contexto )
 
+
 def crear_curso(request):
     curso = Curso(nombre="Python", camada=472473)
     curso.save()
     contexto = {"curso":curso}
     return redirect("/app/Cursos/")
 
+@login_required
 def crear_curso_form(request):
     if request.method == "POST":
         curso_formulario = CursoForm(request.POST) #Esto llena el formulario

@@ -25,7 +25,7 @@ urlpatterns = [
     path('Cursos/',mostrar_cursos),
     path('FormCurso/',crear_curso_form),
     path('BuscaCurso/',busqueda_camada),
-    path('cursosListar/',CursoList.as_view(), name="List"),
+    path('cursosListar/',CursoList.as_view(), name="ListaCursos"),
     path('curso/<int:pk>',CursoDetalle.as_view(), name="CursoDetail"),
     path('crear/', CursoCreacion.as_view(), name="CursoCreate"),
     path('editar/<int:pk>', CursoActualizacion.as_view(), name="CursoEditar"),
