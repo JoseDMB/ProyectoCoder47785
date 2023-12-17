@@ -1,8 +1,9 @@
 from django import forms
 
 class CursoForm(forms.Form):
-    nombre = forms.CharField()
-    camada = forms.IntegerField()
+    titulo = forms.CharField()
+    blog = forms.CharField()
+    imagen = forms.ImageField()
 
 
 class BusquedaCursoForm(forms.Form):

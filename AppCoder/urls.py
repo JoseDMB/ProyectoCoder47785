@@ -17,12 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from AppCoder.views import crear_curso, show_html, mostrar_cursos, crear_curso_form, busqueda_camada, CursoList, \
-    CursoDetalle, CursoCreacion, CursoActualizacion, CursoEliminar
+    CursoDetalle, CursoCreacion, CursoActualizacion, CursoEliminar, about_me
 
 urlpatterns = [
     path("AddCurso/",crear_curso),
     path("ShowPage/", show_html),
-    path('Cursos/',mostrar_cursos),
+    path('Blogs/',mostrar_cursos),
     path('FormCurso/',crear_curso_form),
     path('BuscaCurso/',busqueda_camada),
     path('cursosListar/',CursoList.as_view(), name="ListaCursos"),
@@ -30,4 +30,5 @@ urlpatterns = [
     path('crear/', CursoCreacion.as_view(), name="CursoCreate"),
     path('editar/<int:pk>', CursoActualizacion.as_view(), name="CursoEditar"),
     path('eliminar/<int:pk>', CursoEliminar.as_view(), name="CursoEliminar"),
+    path('AcercaMi/',about_me, name="About")
 ]

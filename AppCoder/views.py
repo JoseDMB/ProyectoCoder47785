@@ -57,7 +57,7 @@ def crear_curso_form(request):
         curso_formulario = CursoForm(request.POST) #Esto llena el formulario
         if curso_formulario.is_valid():
             informacion = curso_formulario.cleaned_data
-            curso_crear = Curso(nombre = informacion["nombre"], camada = informacion["camada"])
+            curso_crear = Curso(titulo= informacion["titulo"], blog = informacion["blog"], imagen= informacion["imagen"])
             curso_crear.save()
             return redirect("/app/Cursos/")
 
@@ -84,4 +84,14 @@ def show_html(request):
     contexto = {"curso":curso, "nombre": "Jose"}
     return render(request,"index.html",contexto)
 
+def mostrar_cursos(request):
+    cursos = Curso.objects.all()
+    contexto = {
+        "cursos" : cursos,
+        "form": BusquedaCursoForm(),
+    }
+    #return redirect("/app/AddCurso/")
+    return render(request,"AppCoder/Cursos.html", contexto )
 
+def about_me(request):
+    return render(request, "AppCoder/acerca_de_mi.html")

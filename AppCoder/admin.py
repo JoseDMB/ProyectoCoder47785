@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from AppCoder.models import Curso, Estudiante
+from AppCoder.models import Estudiante, Curso
 
 # Register your models here.
 

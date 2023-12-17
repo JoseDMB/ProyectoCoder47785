@@ -1,9 +1,15 @@
 <nav class="navbar navbar-light bg-light static-top">
             <div class="container">
-                <a class="navbar-brand" href="#!">Luz Terricola</a>
-                <a class="navbar-brand" href="#!">Disenos</a>
-                <a class="navbar-brand" href="/app/Cursos/">Cursos</a>
-                <a class="navbar-brand" href="/app/FormCurso">Crear curso</a>
-                <a class="btn btn-primary" href="signup">{{nombre}}</a>
+                <a class="navbar-brand" href="{% url 'About' %}">Acerca de mi</a>
+                <a class="navbar-brand" href="/app/Blogs/">Disenos</a>
+                <a class="navbar-brand" href="/app/Blogs/">Blogs</a>
+                <a class="navbar-brand" href="/app/FormCurso">Crear blog</a>
+                {% if user.is_authenticated %}
+                <h5>User: {{ user.get_username }}</h5>
+                <img style="height: 60px" src="{{ user.avatar.imagen.url }}" alt="">
+                <a class="btn btn-primary" href="{% url 'Logout' %}">Logout</a>
+                {% else %}
+                <a class="btn btn-primary" href="{% url 'Login' %}">Login</a>
+                {% endif %}
             </div>
         </nav>
